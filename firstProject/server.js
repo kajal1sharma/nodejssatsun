@@ -1,16 +1,21 @@
 const express = require('express');
 const app = express();
-app.get("/home",(req, res)=>{
-    res.send("this is our express js app")
-})
+const userRouter = require('./routes/user');
+const productRouter =require("./routes/product");
 
-app.get('/about',(req, res)=>{
-    res.send("<h1>This is about page</h1>")
-})
+app.use('/user', userRouter)
+app.use("/product",productRouter);
+// app.get("/home",(req, res)=>{
+//     res.send("this is our express js app")
+// })
 
-app.get("/",(req, res)=>{
-    res.send("This is an error page")
-})
+// app.get('/about',(req, res)=>{
+//     res.send("<h1>This is about page</h1>")
+// })
+
+// app.get("/",(req, res)=>{
+//     res.send("This is an error page")
+// })
 
 
 app.listen(3000,()=>{
