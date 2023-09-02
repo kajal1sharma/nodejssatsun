@@ -3,6 +3,12 @@ const app = express();
 const userRouter = require('./routes/user');
 const productRouter =require("./routes/product");
 
+app.use('/',(req, res,next)=>{
+    console.log("hi iam in undefined function")
+    console.log(res);
+   // res.send("abcd")
+    next();
+})
 app.use('/user', userRouter)
 app.use("/product",productRouter);
 // app.get("/home",(req, res)=>{
