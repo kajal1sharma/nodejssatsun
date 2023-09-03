@@ -1,6 +1,10 @@
 const express = require('express');
 const router =express.Router();
 
+router.get("/productpage",(req, res)=>{
+    res.render('index',{heading:"Amazon website"})
+})
+
 router.get("/productInfo",(req, res,next)=>{
    // res.send("getting all info of the products");
     console.log("hello this is req incompleted");
