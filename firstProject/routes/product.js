@@ -14,9 +14,25 @@ router.get("/productInfo", (req, res)=>{
 router.get("/productInfo/getdetails",(req, res)=>{
     res.send("hi req successfully termminated")
 })
+
+router.get("/getAllDetails",(req, res)=>{
+
+    const data= require("../data");
+    res.json(data);
+})
 router.get("/getdetails",(req, res)=>{
-    console.log(req.url);
-    res.send("Individual product info")
+    const productId = req.query.productId;
+    const color= req.query.color;
+    const data = require('../data');
+    let result=[]
+    console.log(productId ,color)
+    data.forEach(element => {
+        if(element.productId===Number(productId) && element.color===color ){
+            result.push(element)
+        }
+    });
+    res.json([...result]);
+
 })
 
 router.get("/deleteProduct",(req, res)=>{

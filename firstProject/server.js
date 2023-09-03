@@ -3,13 +3,17 @@ const app = express();
 const userRouter = require('./routes/user');
 const productRouter =require("./routes/product");
 
-app.use('/',(req, res,next)=>{
 
-    console.log(req.query.productId)
-    console.log(req.query.color)
-    res.send("abcd")
-    // next();
-})
+
+app.use("/",express.static(__dirname+"/public"))
+
+// app.use('/',(req, res,next)=>{
+
+//     // console.log(req.query.productId)
+//     // console.log(req.query.color)
+//     // res.send("abcd")
+//     // next();
+// })
 app.use('/user', userRouter)
 app.use("/product",productRouter);
 // app.get("/home",(req, res)=>{
