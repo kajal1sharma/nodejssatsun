@@ -7,5 +7,11 @@
 </head>
 <body>
     <h1>Hi this is product page</h1>
+    <% for( let  i=0;i < size;i++ ){  %>
+        <div>
+            <h1><%=data[i].productName%></h1>
+            <p><%=data[i].productDesc%></p>
+        </div>
+    <%}%>
 </body>
 </html>
