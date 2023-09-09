@@ -1,6 +1,9 @@
 const express = require('express');
 const router =express.Router();
 
+
+
+
 router.get("/productpage",(req, res)=>{
     //db
     let data = require('../data')
