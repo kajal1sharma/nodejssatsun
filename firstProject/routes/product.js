@@ -21,6 +21,7 @@ router.get("/productInfo", (req, res)=>{
     // res.send("hello req is taken care of")
 })
 router.get("/productInfo/getdetails",(req, res)=>{
+    
     res.send("hi req successfully termminated")
 })
 
