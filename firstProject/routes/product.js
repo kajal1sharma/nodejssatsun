@@ -6,7 +6,7 @@ const router =express.Router();
 
 router.get("/productpage",(req, res)=>{
     //db
-    let data = require('../data')
+    let data = require('../data').product
     res.render('index',{heading:"Amazon website",data:data, size:data.length})
 })
 

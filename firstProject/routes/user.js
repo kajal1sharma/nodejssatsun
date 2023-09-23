@@ -4,7 +4,8 @@ const bb= require('../utils/busboyutil')
 router.post("/login",bb,(req,res)=>{
 
     console.log("form body");
-    res.send("sent successfullty")
+    let data = require("../data").product;
+    res.render('index',{heading:"Amazon website",data:data, size:data.length})
     // let username= req.query.username;
     // let password =req.query.password;
     // console.log(username, password);
