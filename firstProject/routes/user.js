@@ -1,6 +1,8 @@
 const express = require('express');
 const router =express.Router();
 const bb= require('../utils/busboyutil')
+const usercollection = require('../model/user');
+
 router.post("/login",bb,(req,res)=>{
 
     console.log("form body");
@@ -10,9 +12,10 @@ router.post("/login",bb,(req,res)=>{
     // let password =req.query.password;
     // console.log(username, password);
 })
-router.post("/signin",(req, res)=>{
+router.get("/signin",(req, res)=>{
 
-    
+    let arr= usercollection.find({__v:1})
+    console.log(arr);
     console.log(req.body)
     console.log(req.body.username)
     res.send("user has to signin");

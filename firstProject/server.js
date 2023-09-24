@@ -1,10 +1,11 @@
 const express = require('express');
 var bodyParser = require('body-parser')
+const mongoose  = require('mongoose');
 const app = express();
 const path=require('path')
 const userRouter = require('./routes/user');
 const productRouter =require("./routes/product");
-
+const mongoUrl = require("./config/config").mongoUrl;
 
 
 app.set('view engine', 'ejs');
@@ -34,6 +35,15 @@ app.use("/product",productRouter);
 // })
 
 
-app.listen(3000,()=>{
-    console.log("app listening on port 3000")
+
+mongoose.connect(mongoUrl)
+.then(()=>{
+    app.listen(3000,()=>{
+        console.log("mongo db connected");
+        console.log("app listening on port 3000")
+    })
 })
+.catch((err)=>{
+    console.log("there is some server error ")
+})
+
