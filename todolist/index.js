@@ -26,28 +26,42 @@ app.get('/register',(req, res)=>{
 })
 
 app.post('/login',(req, res)=>{
-    res.status(200).json({message:"successfully logged in"})
+    let password = req.body.password
+    let username = req.body.username;
+
+    let result=user.filter(ele=>ele.username===username)
+
+    bcrypt.compare(password, result[0].password)
+    .then(function(result) {
+        if(result)
+        res.redirect('/todo')
+        // result == true
+    });
+    // res.status(200).json({message:"successfully logged in"})
 })
 app.post('/register',(req, res)=>{
 
     let password = req.body.password
     let username = req.body.username;
 
-    bcrypt.hash(password, 10)
-    .then(function(hashedPassword) {
-        // Store hash in your password DB.
-        user.push({
-            username:username,
-            password:hashedPassword
-        })
-        res.json(user)
-    })
-    .catch(err=>{
-        res.json(err)
-    })
-    
-
-    
+    let hashedpassword =  password+"............"+"hashed"
+    user.push({
+                username:username,
+                password:hashedpassword 
+            })
+            res.json(user)
+    // bcrypt.hash(password, 10)
+    // .then(function(hashedPassword) {
+    //     // Store hash in your password DB.
+    //     user.push({
+    //         username:username,
+    //         password:hashedPassword
+    //     })
+    //     res.json(user)
+    // })
+    // .catch(err=>{
+    //     res.json(err)
+    // })
     // res.status(200).json({message:"successfully registered in"})
 })
 
